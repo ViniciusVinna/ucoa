@@ -27,9 +27,9 @@ O plano de contas para condomínios tem como objetivo principal fornecer uma est
 
 ## 🔧 Requisitos Não Funcionais:
 
-- [ ] O aplicativo deve ser desenvolvido em React Native.
-- [ ] O aplicativo deve ser compatível com dispositivos móveis.
-- [ ] O aplicativo deve ser fácil de usar e intuitivo.
+- [x] O aplicativo deve ser desenvolvido em React Native.
+- [x] O aplicativo deve ser compatível com dispositivos móveis.
+- [x] O aplicativo deve ser fácil de usar e intuitivo.
 - [ ] O aplicativo deve ser seguro e proteger os dados do usuário.
 - [ ] O aplicativo deve ser testado e validado antes da entrega.
 - [ ] O aplicativo deve ser entregue dentro do prazo estabelecido.
