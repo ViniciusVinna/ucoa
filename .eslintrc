@@ -1,0 +1,76 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "ignorePatterns": ["metro.config.js", "babel.config.js"],
+  "overrides": [
+    {
+      "env": {
+        "node": true
+      },
+      "files": [
+        ".eslintrc.{js,cjs}"
+      ],
+      "parserOptions": {
+        "sourceType": "script"
+      }
+    },
+    {
+      "files": ["test/**"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"],
+      "rules": { "jest/prefer-expect-assertions": "off" }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "jest"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "warn",
+      "unix"
+    ],
+    "quotes": [
+      "warn",
+      "double"
+    ],
+    "semi": [
+      "warn",
+      "always"
+    ]
+  },
+  "settings": {
+    "jest": {
+      "globalAliases": {
+        "describe": ["context"],
+        "fdescribe": ["fcontext"],
+        "xdescribe": ["xcontext"]
+      }
+    }
+  }
+}
