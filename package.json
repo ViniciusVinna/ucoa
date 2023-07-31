@@ -1,5 +1,7 @@
 {
-  "name": "my-app",
+  "name": "ucoa-app",
+  "description": "A chart of accounts app",
+  "author": "Vinícius Ribeiro Fernandes <vinicius.vrf@gmail.com>",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
