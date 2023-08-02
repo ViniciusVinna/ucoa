@@ -1,19 +1,36 @@
+import Icons from "@expo/vector-icons/Feather";
 import {  Stack, Link } from "expo-router";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, ScrollView} from "react-native";
 
-import { List } from "@/components";
+import { SearchNode } from "@/containers";
+import { theme } from "@/theme";
+
+const { designTokens } = theme;
 
 export default function Home() {
   return (
-    <SafeAreaView>
-      <Stack.Screen
-        options={{
-          headerTitle: "Plano de Contas",
-          headerRight: () => <Link href="/account/">Cadastrar Conta</Link>,
-        }}
-      />
+    <SafeAreaView style={{ backgroundColor: designTokens.colors.primary }}>
+      <ScrollView>
+        <Stack.Screen
+          options={{
+            headerTitle: "Plano de Contas",
+            headerShadowVisible: false,
+            headerRight: () => (
+              <Link
+                href="/account/"
+              >
+                <Icons
+                  name="plus"
+                  size={26}
+                  color={theme.designTokens.colors.text.lighter}
+                />
+              </Link>
+            ),
+          }}
+        />
 
-      <List />
+        <SearchNode />
+      </ScrollView>
     </SafeAreaView>
   );
 }

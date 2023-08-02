@@ -1,4 +1,4 @@
-type accountTypes = "Despesa" | "Receita"
+type accountTypes = "Despesa" | "Receita" | "Ativo" | "Passivo" | "Patrimônio Líquido" | "Resultado";
 
 interface AccountBase {
   code: string;

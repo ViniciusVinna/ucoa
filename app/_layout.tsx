@@ -1,9 +1,9 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-
-import { SplashScreen, Stack } from "expo-router";
+import Icons from "@expo/vector-icons/Feather";
+import { SplashScreen } from "expo-router";
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
-import { StackNavigator } from "../components";
+
+import { SwitchRouter } from "@/containers";
 
 export {
   ErrorBoundary,
@@ -14,7 +14,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-    ...FontAwesome.font,
+    ...Icons.font,
   });
 
   useEffect(() => {
@@ -30,8 +30,6 @@ export default function RootLayout() {
   }
 
   return (
-    <StackNavigator>
-      <Stack.Screen name="other" options={{}} />
-    </StackNavigator>
+    <SwitchRouter />
   );
 }
