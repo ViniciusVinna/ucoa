@@ -1,5 +1,5 @@
-import { SafeAreaView, StyleSheet, View, Text } from "react-native";
-import { Stack, Link } from "expo-router";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Link, Stack } from "expo-router";
 
 export default function AccountPage() {
 
@@ -8,7 +8,8 @@ export default function AccountPage() {
       <Stack.Screen
         options={{
           headerTitle: "Inserir Conta",
-          headerRight: () => <Link href="/">Cadastrar Conta</Link>,
+          headerRight: () => <Link href="/account/112233/">Inserir Conta</Link>,
+          headerLeft: () => <Link href="/" />,
         }}
       />;
 

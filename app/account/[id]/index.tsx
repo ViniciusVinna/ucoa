@@ -1,14 +1,13 @@
-import { SafeAreaView, StyleSheet, View, Text } from "react-native";
-import { Stack, Link } from "expo-router";
+import { Button, SafeAreaView, StyleSheet, View, Text } from "react-native";
+import { Stack } from "expo-router";
 
 export default function AccountPageEdit() {
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Stack.Screen
         options={{
           headerTitle: "Inserir Conta",
-          headerRight: () => <Link href="/">Editar Conta ID</Link>,
+          headerRight: () => <Button onPress={() => {console.log("ok");}} title="Ok"/>,
         }}
       />;
 
