@@ -3,7 +3,8 @@ import { FlatList, View, Text, StyleSheet } from "react-native";
 
 import { ListItem } from "./Item";
 
-import { designTokens } from "@/theme/design-tokens";
+import { theme } from "@/theme";
+const { designTokens } = theme;
 
 type ListNodeParams = { data: AccountEntity[] };
 
@@ -38,17 +39,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
-    margin: 16
+    margin: designTokens.spacings.default,
   },
 
   info: {
     color: designTokens.colors.text.medium,
-    fontSize: 14,
+    fontSize: designTokens.fontSizes.small,
   },
 
   heading: {
     color: designTokens.colors.text.dark,
-    fontWeight: "bold",
-    fontSize: 18,
+    fontWeight: "300",
+    fontSize: designTokens.fontSizes.medium,
   },
 });

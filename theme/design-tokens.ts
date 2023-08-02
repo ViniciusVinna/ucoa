@@ -36,6 +36,15 @@ const spacings = {
   xxxlarge: 56,
 } as const;
 
+const fontSizes = {
+  small: 14,
+  medium: 16,
+  large: 24,
+  xlarge: 32,
+  xxlarge: 40,
+  xxxlarge: 56,
+} as const;
+
 const stackNavigatorStyles: StackNavigatorStyles = {
   headerStyle: {
     backgroundColor: colors.primary,
@@ -53,5 +62,6 @@ const stackNavigatorStyles: StackNavigatorStyles = {
 export const designTokens = {
   colors,
   spacings,
+  fontSizes,
   stackNavigatorStyles,
 } as const;

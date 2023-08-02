@@ -19,11 +19,11 @@ export default function SearchNode() {
     flattenTree(useCases.account.store.data)
   );
 
-  const [search, setSearch] = useState("");
-
   return (
     <View
-      style={{ paddingVertical: designTokens.spacings.default }}
+      style={{
+        paddingVertical: designTokens.spacings.default
+      }}
     >
       <SearchBar />
 
@@ -35,8 +35,6 @@ export default function SearchNode() {
         }}>
         <ListNode data={accounts} />
       </View>
-
-
     </View>
   );
 }
