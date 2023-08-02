@@ -1,5 +1,5 @@
 import { scenarios } from "../../__data__";
-import * as functions from "./functions";
+import * as functions from "./commands";
 
 describe("account/helpers", () => {
   describe("acountAllowsEntries", () => {
