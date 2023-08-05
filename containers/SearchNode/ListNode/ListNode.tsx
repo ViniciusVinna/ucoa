@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList, View, Text, StyleSheet } from "react-native";
 
-import { ListItem } from "./Item";
+import { NodeItem } from "./NodeItem";
 
 import { theme } from "@/theme";
 const { designTokens } = theme;
@@ -27,7 +27,7 @@ export default function ListNode({ data }: ListNodeParams) {
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <ListItem {...item} />
+          <NodeItem {...item} />
         )}
       />
     </>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
 
   info: {
-    color: designTokens.colors.text.medium,
+    color: designTokens.colors.text.dark,
     fontSize: designTokens.fontSizes.small,
   },
 

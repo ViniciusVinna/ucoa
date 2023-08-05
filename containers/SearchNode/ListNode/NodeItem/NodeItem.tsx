@@ -5,19 +5,20 @@ import { StyleSheet, Text, View } from "react-native";
 import Icons from "@expo/vector-icons/Feather";
 import { theme  } from "@/theme";
 
+import { useCases } from "@/core";
+
 const { helpers, designTokens } = theme;
 
-export function ListItem({ name, code, type, allowsEntries }: AccountEntity ) {
+export default function NodeItem({ name, code, type, allowsEntries }: AccountEntity ) {
   const nestingLevel = code.split(".").length;
 
-  const backgroundColor = type === "Receita"
+  const backgroundColor = type === useCases.account.lib.dictionary.AccountDictionary.REVENUE
     ? helpers.darkenColor(designTokens.colors.successLight, (nestingLevel * 6))
     : helpers.darkenColor(designTokens.colors.warningLight, (nestingLevel * 6));
 
-  const color = type === "Receita"
+  const color = type === useCases.account.lib.dictionary.AccountDictionary.REVENUE
     ? designTokens.colors.success
     : designTokens.colors.error;
-
 
   return (
     <View

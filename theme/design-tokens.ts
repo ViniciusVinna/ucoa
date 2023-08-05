@@ -26,6 +26,16 @@ const fontWeights = {
   bolder: "900",
 } as const;
 
+const sizes = {
+  default: 16,
+  small: 8,
+  medium: 16,
+  large: 24,
+  xlarge: 32,
+  xxlarge: 40,
+  xxxlarge: 56,
+} as const;
+
 const spacings = {
   default: 16,
   small: 8,
@@ -61,7 +71,8 @@ const stackNavigatorStyles: StackNavigatorStyles = {
  */
 export const designTokens = {
   colors,
-  spacings,
   fontSizes,
+  sizes,
+  spacings,
   stackNavigatorStyles,
 } as const;

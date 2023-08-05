@@ -1,18 +1,36 @@
-import { Button, SafeAreaView, StyleSheet, View, Text } from "react-native";
-import { Stack } from "expo-router";
+import Icons from "@expo/vector-icons/Feather";
+import { SafeAreaView, StyleSheet, View, Text } from "react-native";
+import { Link, Stack, useGlobalSearchParams } from "expo-router";
+
+import { theme } from "@/theme";
+
+const { designTokens } = theme;
 
 export default function AccountPageEdit() {
+  const { id: code = "" } = useGlobalSearchParams();
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.container}>
       <Stack.Screen
         options={{
-          headerTitle: "Inserir Conta",
-          headerRight: () => <Button onPress={() => {console.log("ok");}} title="Ok"/>,
+          headerTitle: `Conta ${code}`,
+          headerBackTitleVisible: true,
+          headerLeft: () => (
+            <Link href="/" style={styles.icon}>
+              <Icons
+                name="arrow-left"
+                size={designTokens.sizes.large}
+                color={designTokens.colors.text.lighter}
+              />
+            </Link>
+          ),
         }}
-      />;
+      />
 
       <View style={styles.container}>
-        <Text style={styles.title}>EDIT ACCOUNT PAGE BY ID</Text>
+        <Text style={styles.title}>
+          EDIT ACCOUNT PAGE BY ID {code}
+        </Text>
 
         <View style={styles.separator} />
       </View>
@@ -27,10 +45,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor:"#fff"
   },
+
+  icon: {
+    padding: 10,
+  },
+
   title: {
     fontSize: 20,
     fontWeight: "bold",
   },
+
   separator: {
     marginVertical: 30,
     height: 1,

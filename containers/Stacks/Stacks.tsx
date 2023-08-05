@@ -5,7 +5,9 @@ const { designTokens } = theme;
 
 import type { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 
-export default function SwitchRouter({ ...props }: NativeStackNavigationOptions & { children: React.ReactNode }) {
+type StacksProps = NativeStackNavigationOptions & { children: React.ReactNode };
+
+export default function Stacks({ ...props }: StacksProps) {
   return (
     <Stack
       screenOptions={{

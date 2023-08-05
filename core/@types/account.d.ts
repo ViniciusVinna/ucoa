@@ -1,14 +1,14 @@
-type accountTypes = "Despesa" | "Receita" | "Ativo" | "Passivo" | "Patrimônio Líquido" | "Resultado";
+type AccountTypes = "Despesa" | "Receita" | "Ativo" | "Passivo" | "Patrimônio Líquido" | "Resultado";
 
 interface AccountBase {
   code: string;
   name: string;
-  type: accountTypes;
+  type: AccountTypes;
   allowsEntries: boolean;
 }
 
 interface AccountEntity extends AccountBase {
-  children: Account[];
+  children: AccountEntity[];
   hasChildren: boolean;
   hasParent: boolean;
   parent?: Account;

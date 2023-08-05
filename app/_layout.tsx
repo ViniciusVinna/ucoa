@@ -3,7 +3,7 @@ import { SplashScreen } from "expo-router";
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
 
-import { SwitchRouter } from "@/containers";
+import { Stacks } from "@/containers";
 
 export {
   ErrorBoundary,
@@ -30,6 +30,6 @@ export default function RootLayout() {
   }
 
   return (
-    <SwitchRouter />
+    <Stacks />
   );
 }

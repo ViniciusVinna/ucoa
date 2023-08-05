@@ -3,5 +3,6 @@ import accountsTreeStub from "./accounts-tree.stub.json";
 
 export const stubs = {
   accounts: accountsStub as AccountBase[],
-  accountsTree: accountsTreeStub as AccountEntity[]
+  accountsTree: accountsTreeStub as AccountEntity[],
+  accountsVinicius: accountsTreeStub as AccountEntity[],
 };

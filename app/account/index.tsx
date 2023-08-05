@@ -1,17 +1,25 @@
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { Link, Stack } from "expo-router";
+import { Link, useSegments, useLocalSearchParams, useGlobalSearchParams, Stack } from "expo-router";
+
+// headerRight: () => <Link href="/account/112233/">Inserir Conta</Link>,
+
 
 export default function AccountPage() {
+
+  const global = useGlobalSearchParams();
+  const local = useLocalSearchParams();
+  const segments = useSegments();
+
+  console.log({ local, global, segments });
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Stack.Screen
         options={{
           headerTitle: "Inserir Conta",
-          headerRight: () => <Link href="/account/112233/">Inserir Conta</Link>,
           headerLeft: () => <Link href="/" />,
         }}
-      />;
+      />
 
       <View style={styles.container}>
         <Text style={styles.title}>NEW ACCOUNT PAGE</Text>
