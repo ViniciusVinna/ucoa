@@ -1,81 +1,71 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
 /**
- * Converts an account service to entity account
- * @param account
+ * Save the state to Async Storage.
+ *
+ * @param {AccountEntity[]} state The state to save.
+ */
+export async function saveToAsyncStorage(state: AccountEntity[]) {
+  await AsyncStorage.setItem(
+    "accounts",
+    JSON.stringify(state)
+  );
+}
+
+/**
+ *  Load the state from Async Storage.
+ *
  * @returns
  */
+export async function loadFromAsyncStorage(): Promise<AccountEntity[]> {
+  const accounts = await AsyncStorage.getItem("accounts");
+
+  return accounts === null
+    ? []
+    : JSON.parse(accounts);
+}
 
 /**
- * checks if an account allows entries
+ * Suggest child code based on parent code and existing accounts.
  *
+ * @param {string} parentCode The parent code.
+ * @param {AccountEntity[]} accounts The existing accounts.
+ * @returns {string} The suggested child code.
  */
-export const accountAllowsEntries = (account: AccountBase): boolean => account.allowsEntries;
+export function suggestChildCode(parentCode: string, accounts: AccountEntity[]): string {
+  const childAccounts = accounts
+    .filter(account =>
+      account.parentCodes.includes(parentCode)
+    );
+
+  const maxChildCode = Math
+    .max(...childAccounts
+      .map(account => Number(account.code.split(".").pop()))
+    );
+
+  return isNaN(maxChildCode)
+    ? `${parentCode}.1`
+    : `${parentCode}.${maxChildCode + 1}`;
+}
 
 /**
+ * Check if the account can have children.
  *
- * @param parent
- * @param child
- * @returns
+ * @param {AccountEntity} account The account to check.
+ * @returns {boolean} True if the account can have children, false otherwise.
  */
-export const isSameTypeAsParent = (parent: AccountBase, child: AccountBase): boolean => parent.type === child.type;
-
+export function canHaveChildren(account: AccountEntity): boolean {
+  return !account.allowsEntries;
+}
 
 /**
+ * Check if the code is unique among the accounts.
  *
- * @param code
- * @returns
+ * @param {string} code The code to check.
+ * @param {AccountEntity[]} accounts The existing accounts.
+ * @returns {boolean} True if the code is unique, false otherwise.
  */
-export const isValidCode = (code: AccountBase["code"]): boolean => {
-  const parts = code.split(".");
-  return parts.every(part => {
-    const number = parseInt(part, 10);
-    return number >= 1 && number <= 999;
-  });
-};
-
-
-/**
- *
- * @param code
- * @param accounts
- * @returns
- */
-const isUniqueCode = (code: string, accounts: AccountBase[]): boolean => !accounts.some(account => account.code === code);
-
-
-/**
- *
- * @param parentCode
- * @param accounts
- * @returns
- */
-const suggestNextCode = (parentCode: string, accounts: AccountBase[]): string => {
-  const children = accounts.filter(account => account.code.startsWith(parentCode));
-  const maxChildCode = Math.max(...children.map(child => parseInt(child.code.split(".").pop() as string, 10)));
-  return `${parentCode}.${maxChildCode + 1}`;
-};
-
-/**
- *
- * @param parent
- * @param name
- * @param type
- * @param allowsEntries
- * @param accounts
- * @returns
- */
-export const createAccount = (parent: AccountBase, name: string, type: string, allowsEntries: boolean, accounts: AccountBase[]): AccountBase | null => {
-  if (!isSameTypeAsParent(parent, { code: "", name, type, allowsEntries })) {
-    throw new Error("A conta deve ser do mesmo tipo que seu pai");
-  }
-  if (allowsEntries && !accountAllowsEntries(parent)) {
-    throw new Error("A conta que aceita lançamentos não pode ter filhas");
-  }
-  const code = suggestNextCode(parent.code, accounts);
-  if (!isValidCode(code)) {
-    throw new Error("O código sugerido é inválido");
-  }
-  if (!isUniqueCode(code, accounts)) {
-    throw new Error("O código sugerido já está em uso");
-  }
-  return { code, name, type, allowsEntries };
-};
+export function isCodeUnique(code: string, accounts: AccountEntity[]): boolean {
+  return !accounts.some(account => account.code === code);
+}

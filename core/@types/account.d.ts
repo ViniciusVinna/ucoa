@@ -11,9 +11,20 @@ interface AccountEntity extends AccountBase {
   children: AccountEntity[];
   hasChildren: boolean;
   hasParent: boolean;
-  parent?: Account;
+  parent?: AccountEntity;
   parentCodes: string[];
   type: AccountTypes;
+  siblings?: AccountEntity[];
 }
+
+/**
+ * Actions that can be performed on the accounts state
+ */
+type Action =
+  | { type: "CREATE"; payload: AccountEntity }
+  | { type: "READ"; payload: string }
+  | { type: "UPDATE"; payload: AccountEntity }
+  | { type: "DELETE"; payload: string }
+  | { type: "SET"; payload: AccountEntity[] };
 
 type RequiredAccount = Required<Account>;

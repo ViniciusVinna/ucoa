@@ -1,4 +1,4 @@
-
 export * as commands from "./commands";
+export * as hooks from "./hooks";
 export * as lib from "./lib";
-export { store } from "./store";
+export * as store from "./store";

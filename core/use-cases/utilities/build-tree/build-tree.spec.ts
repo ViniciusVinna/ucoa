@@ -1,4 +1,4 @@
-import { scenarios } from "../../__data__";
+import { scenarios } from "@/core/use-cases/__data__";
 
 import { buildTree } from "./build-tree";
 
