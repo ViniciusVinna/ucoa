@@ -48,7 +48,7 @@
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error",
     "indent": [
-      "error",
+      "off",
       2
     ],
     "linebreak-style": [
