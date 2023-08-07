@@ -1,23 +1,35 @@
-import React, { useState } from "react";
-import { View } from "react-native";
+import React, { useState, useCallback } from "react";
+import { View, Text } from "react-native";
 
 import { ListNode } from "./ListNode";
 import { SearchBar } from "./SearchBar";
-
-import { useCases } from "@/core";
 
 import {  theme } from "@/theme";
 
 const { designTokens } = theme;
 
-function flattenTree(tree: AccountEntity[]): AccountEntity[] {
-  return tree.flatMap((node) => [node, ...(node.children ? flattenTree(node.children) : [])]);
-}
+type SearchNodeProps = {
+  tree: AccountEntity[];
+};
 
-export default function SearchNode() {
-  const [accounts] = useState<AccountEntity[]>(
-    flattenTree(useCases.account.store.data)
-  );
+export default function SearchNode({ tree }: SearchNodeProps) {
+  const [searchValue, setSearchValue] = useState<string>("");
+
+  const filterBySearchValue = useCallback(() => {
+    const filtered = tree.filter(
+      ({ code, name }) =>
+        (code
+          .toLowerCase()
+          .startsWith(searchValue.toLowerCase()))
+        ||
+        (name
+          .toLowerCase()
+          .includes(
+            searchValue.toLowerCase()))
+    );
+
+    return filtered;
+  }, [searchValue]);
 
   return (
     <View
@@ -25,7 +37,7 @@ export default function SearchNode() {
         paddingVertical: designTokens.spacings.default
       }}
     >
-      <SearchBar />
+      <SearchBar onChangeTextHandler={setSearchValue}/>
 
       <View
         style={{
@@ -33,8 +45,23 @@ export default function SearchNode() {
           borderRadius: designTokens.spacings.large,
           paddingHorizontal: designTokens.spacings.default,
         }}>
-        <ListNode data={accounts} />
+
+        <ListNode data={filterBySearchValue()} />
       </View>
+
+      {
+        searchValue &&
+        <View>
+          <Text
+            style={{
+              backgroundColor: designTokens.colors.background,
+              borderRadius: designTokens.spacings.large,
+              paddingHorizontal: designTokens.spacings.default,
+            }}>
+            Nenhum Item Encontrado
+          </Text>
+        </View>
+      }
     </View>
   );
 }

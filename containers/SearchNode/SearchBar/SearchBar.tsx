@@ -1,22 +1,28 @@
 import Icons from "@expo/vector-icons/Feather";
-import React from "react";
-import { TouchableHighlight, View, StyleSheet, TextInput } from "react-native";
+import { TouchableHighlight, View, TextInput } from "react-native";
 
 import { theme  } from "@/theme";
 const { designTokens } = theme;
 
 export type SearchBarParams = {
-  value: string;
-  onClearHandler: (value: string) => void;
+  onChangeTextHandler: (value: string) => void;
 };
 
-export default function SearchBar({ value = "", onClearHandler }: SearchBarParams) {
+export default function SearchBar({ onChangeTextHandler = (value) => { value; } }: SearchBarParams) {
   return (
     <View style={{
       paddingHorizontal: designTokens.spacings.default,
       paddingBottom: designTokens.spacings.large,
     }}>
-      <View style={styles.searchBar}>
+      <View style={{
+        alignItems: "center",
+        backgroundColor: designTokens.colors.white,
+        borderRadius: 100,
+        flexDirection: "row",
+        height: designTokens.spacings.xxxlarge,
+        justifyContent: "flex-start",
+        padding: designTokens.spacings.default,
+      }}>
         <Icons
           color={theme.designTokens.colors.text.light}
           marginRight={designTokens.spacings.default}
@@ -26,9 +32,14 @@ export default function SearchBar({ value = "", onClearHandler }: SearchBarParam
 
         <TextInput
           placeholder="Pesquisar conta"
+          onChangeText={onChangeTextHandler}
           style={{
+            color: theme.designTokens.colors.text.light,
+            flex: 1,
+            padding: designTokens.spacings.small,
+            fontSize: designTokens.spacings.default,
+            justifyContent: "flex-start",
             marginRight: "auto",
-            color: theme.designTokens.colors.text.light
           }}
         />
 
@@ -37,23 +48,9 @@ export default function SearchBar({ value = "", onClearHandler }: SearchBarParam
             name="x"
             size={designTokens.spacings.default}
             color={designTokens.colors.text.light}
-            onPress={() => onClearHandler(value)}
           />
         </TouchableHighlight>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  searchBar: {
-    alignItems: "center",
-    backgroundColor: designTokens.colors.white,
-    borderRadius: 100,
-    display: "flex",
-    flexDirection: "row",
-    height: designTokens.spacings.xxxlarge,
-    justifyContent: "flex-start",
-    paddingHorizontal: designTokens.spacings.default,
-  }
-});

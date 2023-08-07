@@ -7,12 +7,10 @@ import type { NativeStackNavigationOptions } from "@react-navigation/native-stac
 
 type StacksProps = NativeStackNavigationOptions & { children: React.ReactNode };
 
-export default function Stacks({ ...props }: StacksProps) {
+export default function Stacks({ ...props }: Partial<StacksProps>) {
   return (
     <Stack
-      screenOptions={{
-        ...designTokens.stackNavigatorStyles,
-      }}
+      screenOptions={{ ...designTokens.stackNavigatorStyles }}
       {...props}
     />
   );

@@ -6,7 +6,9 @@ import { NodeItem } from "./NodeItem";
 import { theme } from "@/theme";
 const { designTokens } = theme;
 
-type ListNodeParams = { data: AccountEntity[] };
+type ListNodeParams = {
+  data: AccountEntity[];
+};
 
 function ListNodesCounter({ counter }: { counter: number }) {
   return (
