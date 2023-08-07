@@ -1,15 +1,21 @@
 import React, { useReducer, useEffect, useCallback } from "react";
 import * as commands from "@/core/use-cases/account/commands";
 
-import { reducer as accountReducer } from "./reducer";
 import { AccountContext } from "./context";
+import { data, utilities } from "@/core/use-cases";
+import { reducer as accountReducer } from "./reducer";
 
 /**
  * The Account Provider component.
  *
  */
 export function AccountProvider({ children }: { children: React.ReactNode }) {
-  const [state, dispatch] = useReducer(accountReducer, []);
+  const [state, dispatch] = useReducer(
+    accountReducer,
+    utilities
+      .flatten
+        .flattenTree(data.scenarios.stubs.accountsTree)
+  );
 
   const dispatchMemo = useCallback(
     (action: Action) => {
@@ -19,11 +25,6 @@ export function AccountProvider({ children }: { children: React.ReactNode }) {
 
   async function loadAccounts() {
     const accounts = await commands.loadFromAsyncStorage();
-
-    console.log({
-      type: "SET",
-      payload: accounts,
-    });
 
     if (accounts !== null) {
       dispatch({

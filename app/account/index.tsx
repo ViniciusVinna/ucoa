@@ -1,8 +1,11 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { Link, useSegments, useLocalSearchParams, useGlobalSearchParams, Stack } from "expo-router";
+import Icons from "@expo/vector-icons/Feather";
+import { SafeAreaView, StyleSheet, View } from "react-native";
+import { Link, useSegments, useLocalSearchParams, useGlobalSearchParams } from "expo-router";
 
-// headerRight: () => <Link href="/account/112233/">Inserir Conta</Link>,
+import { FormNode, StacksHeader } from "@/containers";
 
+import { theme } from "@/theme";
+const { designTokens } = theme;
 
 export default function AccountPage() {
 
@@ -13,18 +16,48 @@ export default function AccountPage() {
   console.log({ local, global, segments });
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Screen
-        options={{
+    <SafeAreaView>
+      <StacksHeader
+        config={{
           headerTitle: "Inserir Conta",
-          headerLeft: () => <Link href="/" />,
+          headerShadowVisible: false,
+
+          headerLeft: () => (
+            <Link
+              href="/"
+              style={{
+                paddingHorizontal: designTokens.spacings.medium,
+              }}
+            >
+              <Icons
+                color={designTokens.colors.text.lighter}
+                name="arrow-left"
+                padding={designTokens.spacings.medium}
+                size={designTokens.sizes.large}
+              />
+            </Link>
+          ),
+
+          headerRight: () => (
+            <Link
+              href="/"
+              style={{
+                paddingHorizontal: designTokens.spacings.medium,
+              }}
+            >
+              <Icons
+                color={designTokens.colors.text.lighter}
+                name="check"
+                padding={designTokens.spacings.medium}
+                size={designTokens.sizes.large}
+              />
+            </Link>
+          ),
         }}
       />
 
       <View style={styles.container}>
-        <Text style={styles.title}>NEW ACCOUNT PAGE</Text>
-
-        <View style={styles.separator} />
+        <FormNode />
       </View>
     </SafeAreaView>
   );
@@ -35,15 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor:"#fff"
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
+    backgroundColor: designTokens.colors.primary,
+    padding: designTokens.spacings.medium,
+  }
 });

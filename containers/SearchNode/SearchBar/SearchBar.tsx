@@ -11,17 +11,17 @@ export type SearchBarParams = {
 export default function SearchBar({ onChangeTextHandler = (value) => { value; } }: SearchBarParams) {
   return (
     <View style={{
-      paddingHorizontal: designTokens.spacings.default,
-      paddingBottom: designTokens.spacings.large,
+      paddingBottom: designTokens.spacings.default,
     }}>
       <View style={{
         alignItems: "center",
         backgroundColor: designTokens.colors.white,
         borderRadius: 100,
         flexDirection: "row",
-        height: designTokens.spacings.xxxlarge,
         justifyContent: "flex-start",
-        padding: designTokens.spacings.default,
+        paddingHorizontal: designTokens.spacings.large,
+        paddingVertical: designTokens.spacings.large,
+        marginBottom: designTokens.spacings.default,
       }}>
         <Icons
           color={theme.designTokens.colors.text.light}
@@ -34,12 +34,14 @@ export default function SearchBar({ onChangeTextHandler = (value) => { value; } 
           placeholder="Pesquisar conta"
           onChangeText={onChangeTextHandler}
           style={{
+            borderRadius: 100,
             color: theme.designTokens.colors.text.light,
             flex: 1,
-            padding: designTokens.spacings.small,
             fontSize: designTokens.spacings.default,
             justifyContent: "flex-start",
-            marginRight: "auto",
+            marginHorizontal: designTokens.spacings.small,
+            outlineColor: theme.designTokens.colors.text.light,
+            padding: designTokens.spacings.medium,
           }}
         />
 

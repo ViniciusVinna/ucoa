@@ -1,10 +1,8 @@
 import React from "react";
-
+import Icons from "@expo/vector-icons/Feather";
 import { StyleSheet, Text, View } from "react-native";
 
-import Icons from "@expo/vector-icons/Feather";
 import { theme  } from "@/theme";
-
 import { useCases } from "@/core";
 
 const { helpers, designTokens } = theme;
@@ -54,12 +52,12 @@ export default function NodeItem({ name, code, type, allowsEntries }: AccountEnt
 const styles = StyleSheet.create({
   item: {
     alignItems: "center",
-    borderRadius: 14,
+    borderRadius: theme.designTokens.spacings.medium,
     boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.05)",
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 4,
     marginTop: 4,
-    padding: 16,
+    padding: theme.designTokens.spacings.medium,
   }
 });

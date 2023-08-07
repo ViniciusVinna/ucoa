@@ -13,7 +13,10 @@ type ListNodeParams = {
 function ListNodesCounter({ counter }: { counter: number }) {
   return (
     <View style={styles.counter}>
-      <Text style={styles.heading}>Listagem</Text>
+      <Text style={styles.heading}>
+        Listagem
+      </Text>
+
       <Text style={styles.info}>
         {counter} registros
       </Text>
@@ -45,13 +48,13 @@ const styles = StyleSheet.create({
   },
 
   info: {
-    color: designTokens.colors.text.dark,
+    color: designTokens.colors.text.medium,
     fontSize: designTokens.fontSizes.small,
   },
 
   heading: {
     color: designTokens.colors.text.dark,
-    fontWeight: "300",
+    fontWeight: "bold",
     fontSize: designTokens.fontSizes.medium,
   },
 });

@@ -1,6 +1,5 @@
 import * as commands from "@/core/use-cases/account/commands";
 import * as data from "@/core/use-cases/__data__";
-import * as utilities from "@/core/use-cases/utilities";
 
 /**
  * The reducer function for the account context.
@@ -10,8 +9,7 @@ import * as utilities from "@/core/use-cases/utilities";
  * @returns {AccountEntity[]} The new state.
  */
 export function reducer(
-  state: AccountEntity[] =
-    utilities.tree.buildTree(data.scenarios.stubs.accountsTree),
+  state: AccountEntity[] = data.scenarios.stubs.accountsTree,
   action: Action
 ): AccountEntity[] {
   switch (action.type) {

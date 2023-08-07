@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useFonts } from "expo-font";
 
 import { Stacks } from "@/containers";
+import { useCases } from "@/core";
 
 export {
   ErrorBoundary,
@@ -30,6 +31,8 @@ export default function RootLayout() {
   }
 
   return (
-    <Stacks />
+    <useCases.account.store.AccountProvider>
+      <Stacks />
+    </useCases.account.store.AccountProvider>
   );
 }
