@@ -38,9 +38,10 @@ const sizes = {
 
 const spacings = {
   default: 16,
-  small: 8,
-  medium: 16,
+  xsmall: 4,
   large: 24,
+  medium: 16,
+  small: 8,
   xlarge: 32,
   xxlarge: 40,
   xxxlarge: 56,
