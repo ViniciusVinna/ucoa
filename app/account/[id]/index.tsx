@@ -18,9 +18,9 @@ export default function AccountPageEdit() {
           headerLeft: () => (
             <Link href="/" style={styles.icon}>
               <Icons
+                color={designTokens.colors.text.lighter}
                 name="arrow-left"
                 size={designTokens.sizes.large}
-                color={designTokens.colors.text.lighter}
               />
             </Link>
           ),

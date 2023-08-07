@@ -7,7 +7,9 @@ import { useCases } from "@/core";
 
 const { helpers, designTokens } = theme;
 
-export default function NodeItem({ name, code, type, allowsEntries }: AccountEntity ) {
+type NodeItemProps = AccountEntity;
+
+export default function NodeItem({ name, code = "", type, allowsEntries }: NodeItemProps) {
   const nestingLevel = code.split(".").length;
 
   const backgroundColor = type === useCases.account.lib.dictionary.AccountDictionary.REVENUE

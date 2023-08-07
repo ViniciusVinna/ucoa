@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from "react";
 import { View, Text } from "react-native";
 
-import { data, utilities } from "@/core/use-cases";
+import { useCases } from "@/core";
+
 import { ListNode } from "./ListNode";
 import { SearchBar } from "./SearchBar";
 
@@ -15,7 +16,7 @@ type SearchNodeProps = {
 
 export default function SearchNode({ tree = [] }: SearchNodeProps) {
   const [searchValue, setSearchValue] = useState<string>("");
-  const dummyData = utilities.flatten.flattenTree(data.scenarios.stubs.accountsTree);
+  const { state } = useCases.account.hooks.useAccount();
 
   const filterBySearchValue = useCallback(() => {
     return tree.filter(
@@ -48,13 +49,12 @@ export default function SearchNode({ tree = [] }: SearchNodeProps) {
         }}>
 
         <ListNode
-          data={ searchValue ? filterBySearchValue() : dummyData }
+          data={ searchValue ? filterBySearchValue() : state }
         />
       </View>
 
       {
-        searchValue &&
-        <View>
+        searchValue && (
           <Text
             style={{
               alignItems: "center",
@@ -66,7 +66,7 @@ export default function SearchNode({ tree = [] }: SearchNodeProps) {
             }}>
             Nenhum Item Encontrado
           </Text>
-        </View>
+        )
       }
     </View>
   );

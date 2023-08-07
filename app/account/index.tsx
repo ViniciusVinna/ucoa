@@ -1,19 +1,17 @@
 import Icons from "@expo/vector-icons/Feather";
 import { SafeAreaView, StyleSheet, View } from "react-native";
-import { Link, useSegments, useLocalSearchParams, useGlobalSearchParams } from "expo-router";
+import { Link } from "expo-router";
 
 import { FormNode, StacksHeader } from "@/containers";
 
 import { theme } from "@/theme";
+import { useCases } from "@/core";
+
 const { designTokens } = theme;
 
 export default function AccountPage() {
-
-  const global = useGlobalSearchParams();
-  const local = useLocalSearchParams();
-  const segments = useSegments();
-
-  console.log({ local, global, segments });
+  const { state } = useCases.account.hooks.useAccount();
+  console.log({ page: state });
 
   return (
     <SafeAreaView>

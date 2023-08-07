@@ -7,7 +7,7 @@ import React, { createContext } from "react";
 export const AccountContext = createContext<
   {
     state: AccountEntity[];
-    dispatch: React.Dispatch<Action>
+    dispatch?: React.Dispatch<Action>
   }
   | undefined
 >(undefined);
