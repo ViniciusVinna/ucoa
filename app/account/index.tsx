@@ -5,14 +5,10 @@ import { Link } from "expo-router";
 import { FormNode, StacksHeader } from "@/containers";
 
 import { theme } from "@/theme";
-import { useCases } from "@/core";
 
 const { designTokens } = theme;
 
 export default function AccountPage() {
-  const { state } = useCases.account.hooks.useAccount();
-  console.log({ page: state });
-
   return (
     <SafeAreaView>
       <StacksHeader

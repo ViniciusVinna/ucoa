@@ -9,7 +9,7 @@ import { useCases } from "@/core";
 const { designTokens } = theme;
 
 export default function Home() {
-  const { state } = useCases.account.hooks.useAccount();
+  const { state } = useCases.accounts.hooks.useAccount();
 
   return (
     <SafeAreaView style={{ backgroundColor: designTokens.colors.primary }}>

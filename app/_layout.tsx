@@ -31,8 +31,8 @@ export default function RootLayout() {
   }
 
   return (
-    <useCases.account.store.AccountProvider>
+    <useCases.accounts.store.AccountProvider>
       <Stacks />
-    </useCases.account.store.AccountProvider>
+    </useCases.accounts.store.AccountProvider>
   );
 }
