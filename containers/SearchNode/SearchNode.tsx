@@ -16,7 +16,7 @@ type SearchNodeProps = {
 
 export default function SearchNode({ tree = [] }: SearchNodeProps) {
   const [searchValue, setSearchValue] = useState<string>("");
-  const { state } = useCases.account.hooks.useAccount();
+  const { state } = useCases.accounts.hooks.useAccount();
 
   const filterBySearchValue = useCallback(() => {
     return tree.filter(

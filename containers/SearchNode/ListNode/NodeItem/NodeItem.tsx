@@ -12,11 +12,11 @@ type NodeItemProps = AccountEntity;
 export default function NodeItem({ name, code = "", type, allowsEntries }: NodeItemProps) {
   const nestingLevel = code.split(".").length;
 
-  const backgroundColor = type === useCases.account.lib.dictionary.AccountDictionary.REVENUE
+  const backgroundColor = type === useCases.accounts.constants.Dictionary.REVENUE
     ? helpers.darkenColor(designTokens.colors.successLight, (nestingLevel * 6))
     : helpers.darkenColor(designTokens.colors.warningLight, (nestingLevel * 6));
 
-  const color = type === useCases.account.lib.dictionary.AccountDictionary.REVENUE
+  const color = type === useCases.accounts.constants.Dictionary.REVENUE
     ? designTokens.colors.success
     : designTokens.colors.error;
 
