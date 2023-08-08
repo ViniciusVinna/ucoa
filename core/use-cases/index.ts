@@ -1,10 +1,10 @@
 /**
  * Purpose: Export all use cases.
 */
-export * as account from "./account";
+export * as accounts from "./accounts";
 
 /**
  * Purpose: Export all data.
  */
-export * as data from "./__data__";
+export * as data from "./shared";
 export * as utilities from "./utilities";

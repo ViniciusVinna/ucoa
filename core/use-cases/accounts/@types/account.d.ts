@@ -1,4 +1,10 @@
-type AccountTypes = "Despesa" | "Receita" | "Ativo" | "Passivo" | "Patrimônio Líquido" | "Resultado";
+type AccountTypes =
+  "Despesa"
+  | "Receita"
+  | "Ativo"
+  | "Passivo"
+  | "Patrimônio Líquido"
+  | "Resultado";
 
 interface AccountBase {
   code: string;
@@ -13,7 +19,6 @@ interface AccountEntity extends AccountBase {
   hasParent: boolean;
   parent?: AccountEntity;
   parentCodes: string[];
-  type: AccountTypes;
   siblings?: AccountEntity[];
 }
 
@@ -22,9 +27,9 @@ interface AccountEntity extends AccountBase {
  */
 type Action =
   | { type: "CREATE"; payload: AccountEntity }
-  | { type: "READ"; payload: string }
+  | { type: "READ"; payload: AccountEntity }
   | { type: "UPDATE"; payload: AccountEntity }
-  | { type: "DELETE"; payload: string }
+  | { type: "DELETE"; payload: AccountEntity }
   | { type: "SET"; payload: AccountEntity[] };
 
 type RequiredAccount = Required<Account>;

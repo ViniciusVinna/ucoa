@@ -1,9 +1,9 @@
-import { scenarios } from "@/core/use-cases/__data__";
+import { scenarios } from "@/core/use-cases/shared";
 
 import { buildTree } from "./build-tree";
 
 describe("buildTree", () => {
-  const accounts = scenarios.stubs.accounts;
+  const accounts = scenarios.accounts;
 
 
   it("should correctly build a tree from a flat list of accounts", () => {
